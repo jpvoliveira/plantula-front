@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
 import { Container, Form, Input, Button } from "../../components/FormComponents"
+import Logo from '../../assets/plantulaLogo.js'
 
 export default function SignUp() {
   return (
     <Container>
-      <h1>Plantula</h1>
+      <Logo class="logo"/>
       <Form >
         <Input
           placeholder="E-mail"

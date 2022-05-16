@@ -16,6 +16,10 @@ const Container = styled.div`
   h1{
     font-size: 30px;
   }
+  .logo{
+    width: 200px;
+    height: 100px;
+  }
 `
 
 const Form = styled.form`
