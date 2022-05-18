@@ -22,20 +22,26 @@ export default function Products() {
   return (
     <>
       <Header />
-      <Container>
-        {products.map((item)=> <Product data={item}/>)}
-      </Container>
+      <Box>
+        <Container>
+          {products.map((item)=> <Product data={item}/>)}
+        </Container>
+      </Box>
     </>
   )
 }
 
 const Container = styled.div`
-  height: 100vh;
-  background-color: #7DBA84;
+  background-color: #7EA879;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap; 
   padding-top: 20px;
+  width: 400px;
 
   gap: 20px;
+`
+const Box = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

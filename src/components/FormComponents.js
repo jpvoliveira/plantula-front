@@ -1,9 +1,7 @@
 import styled from "styled-components"
 
 const Container = styled.div`
-  height: 100vh;
-  background-color: #7DBA84;
-
+  padding-top: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,9 +59,10 @@ const Button = styled.button`
   text-align: center;
 
   padding: 12px;
-  
-  background: #2C7E4C;
+  color: white;
+  background: #528654;
   border-radius: 5px;
+  margin-top: 20px;
 `
 
 export {
