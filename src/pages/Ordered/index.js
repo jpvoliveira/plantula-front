@@ -95,11 +95,12 @@ gap: 5px;
 `
 
 function BoxPayment() {
+  const navigate = useNavigate()
   return(
     <ContainerPayment>
-      <button>BOLETO</button>
-      <button>PIX</button>
-      <button>TED</button>
+      <button onClick={() => navigate(`/ordered/payment/boleto`)}>BOLETO</button>
+      <button onClick={() => navigate(`/ordered/payment/pix`)}>PIX</button>
+      <button onClick={() => navigate(`/ordered/payment/ted`)}>TED</button>
     </ContainerPayment>
   )
 }

@@ -5,6 +5,7 @@ import SignUp from "./pages/Sign-Up";
 import Products from "./pages/Products";
 import Product from "./pages/Product";
 import Ordered from "./pages/Ordered";
+import Payment from "./pages/Payment";
 import requestContext from './contexts/requestContext';
 import TokenContext from "./contexts/tokenContext";
 
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/sign-in" element={<SignIn/>}></Route>
             <Route path="/sign-up" element={<SignUp/>}></Route>
             <Route path="/ordered" element={<Ordered/>}></Route>
+            <Route path="/ordered/payment/:type" element={<Payment/>}></Route>
           </Routes>
         </BrowserRouter>
       </requestContext.Provider>
