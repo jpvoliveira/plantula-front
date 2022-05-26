@@ -3,19 +3,21 @@ import styled from "styled-components"
 import Header from "../../components/Header"
 import Product from "../../components/Product"
 import api from "../../services/api"
+import BoxCategory from "../../components/BoxCategory"
 
 export default function Products() {
   const [products, setProducts] = useState("")
+  const [category, setCategory] = useState('mudas')
 
   useEffect(()=>{
-    const promise = api.getProducts()
+    const promise = api.getProducts({category})
     promise.then((res)=>{
       setProducts(res.data)
     }).catch((error)=>{
       const erro = error.response.data
       alert(erro)
     })
-  }, [])
+  }, [category])
 
   if (!products) return <p>Loading</p>
 
@@ -23,6 +25,7 @@ export default function Products() {
     <>
       <Header />
       <Box>
+        <BoxCategory category={category} setCategory={setCategory}/>
         <Container>
           {products.map((item)=> <Product data={item}/>)}
         </Container>
@@ -32,16 +35,17 @@ export default function Products() {
 }
 
 const Container = styled.div`
-  background-color: #7EA879;
   display: flex;
   flex-wrap: wrap; 
-  padding-top: 20px;
   width: 400px;
-
+  height: 580px;
+  overflow-y: scroll;
   gap: 20px;
+  margin-top: 30px;
 `
 const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `

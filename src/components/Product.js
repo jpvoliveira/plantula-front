@@ -5,37 +5,56 @@ export default function Product({ data }) {
   let price = data.price / 100
 
   return (
-    <Box>
+    <Box onClick={() => navigate(`/products/${data.id}`)}>
       <Image url={data.image} />
       <div className="infos">
-        <p>{data.name}</p>
-        <p>{data.description}</p>
-        <p>R$ {price.toFixed(2)} und</p>
-        <button onClick={() => navigate(`/products/${data.id}`)}>Comprar</button>
+        <div>
+          <h1>{data.name}</h1>
+          <p>{data.description}</p>
+        </div>
+        <h2>R$ {price.toFixed(2)}<span> und</span></h2>
       </div>
     </Box>
   )
 }
 
 const Box = styled.div`
-  width: 190px;
-  height: 290px;
-  background-color: #D7EDC3;
-
+  width: 400px;
+  height: 150px;
   display: flex;
-  flex-direction: column;
+
   align-items: center;
   gap: 20px;
-  padding-top: 15px;
   border-radius: 5px;
 
   .infos{
-    height: 65px;
-    gap: 5px;
+    height: 150px;
+    width: 230px;
     display: flex;
-    align-items: center;
+    gap: 10px;
     flex-direction: column;
-    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    word-wrap: break-word;
+    font-family: 'Montserrat'; 
+    justify-content: space-between;
+    
+    h1{
+      font-weight: 600;
+      font-size: 25px;
+    }
+    p{
+      padding-top: 10px; 
+      font-size: 15px;
+    }
+    h2{
+      font-weight: 600;
+      font-size: 20px;
+      color: #528654;
+      span{
+        font-size: 15px;
+      }
+    }
   }
 
   button{
@@ -53,13 +72,14 @@ const Box = styled.div`
 `
 
 const Image = styled.div`
-  width: 160px;
-  height: 160px;
+  width: 150px;
+  height: 150px;
   background-image: url(${(props) => props.url});
   background-position: center;
 	background-size: cover;
   
   display: flex;
   flex-direction: column;
+  border-radius: 15px;
 `
 

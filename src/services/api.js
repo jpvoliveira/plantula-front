@@ -10,8 +10,8 @@ function createConfig(token) {
   }
 }
 
-async function getProducts() {
-  const products = await axios.get(`${BASE_URL}/products`)
+async function getProducts({category}) {
+  const products = await axios.get(`${BASE_URL}/products/${category}`)
   return products
 }
 
@@ -34,12 +34,17 @@ async function findUser(token) {
   return userData
 }
 
+async function postOrder(orderData) {
+  axios.post(`${BASE_URL}/order`, {orderData})
+}
+
 const api = {
   getProducts,
   getProductById,
   signUp,
   signIn,
-  findUser
+  findUser,
+  postOrder
 }
 
 export default api
