@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import TokenContext from '../contexts/tokenContext'
 import api from "../services/api";
 
-export default function Header() {
+export default function Header(props) {
   const navigate = useNavigate()
   const { token } = useContext(TokenContext)
   const [username, setUsername] = useState(null)
@@ -23,7 +23,7 @@ export default function Header() {
         alert(erro)
       }
     })
-  }, [])
+  }, [token])
 
   function handleLogout() {
     localStorage.removeItem('auth')
@@ -39,6 +39,7 @@ export default function Header() {
     <>
       <BoxHeader>
         <Logo />
+        {props.return ? <Return onClick={()=>navigate('/')} src="https://cdn-icons-png.flaticon.com/512/263/263085.png"></Return> : 
         <BoxInfoUser>
           {token ?
             <>
@@ -51,6 +52,7 @@ export default function Header() {
             <h2 onClick={handleLogin}>Clique aqui para acessar sua conta!</h2>
           }
         </BoxInfoUser>
+        }
       </BoxHeader>
     </>
   )
@@ -82,4 +84,9 @@ const BoxInfoUser = styled.div`
   h2{
     font-size: 15px;
   }
+`
+
+const Return = styled.img`
+  height: 30px;
+  width: 30px;
 `

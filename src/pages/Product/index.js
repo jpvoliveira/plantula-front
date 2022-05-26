@@ -49,7 +49,7 @@ export default function Products() {
 
   return (
     <>
-      <Header />
+      <Header return={true}/>
       <Box>
         <Data>
           <Title>{product.name}</Title>

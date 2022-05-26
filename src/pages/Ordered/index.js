@@ -46,10 +46,9 @@ export default function Ordered() {
 
   return(
     <>
-      <Header />
+      <Header/>
       <Box>
-        <h1>Ola, {userData.name}</h1>
-        <h2>Finalizar a compra:</h2>
+        <h1>Finalizar a compra:</h1>
         <BoxRequest request={request}/>
         <button onClick={handleCancel}>CANCELAR COMPRA</button>
         <p>ATENÇÃO: Nós solicitamos o pagamento de um <br/> sinal no  valor 30% para garantia da mercadoria
