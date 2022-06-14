@@ -1,29 +1,30 @@
 import styled from "styled-components";
 import Logo from "../assets/plantulaLogo";
-import Logout from "../assets/logout";
 import { useContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import TokenContext from '../contexts/tokenContext'
 import api from "../services/api";
+import { ArrowUDownLeft, SignOut } from "phosphor-react";
 
 export default function Header(props) {
   const navigate = useNavigate()
   const { token } = useContext(TokenContext)
   const [username, setUsername] = useState(null)
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     const promise = api.findUser(token)
-    promise.then((res)=>{
+    promise.then((res) => {
       setUsername(res.data.name)
-    }).catch((error)=>{
+    }).catch((error) => {
       const erro = error.response.status
       if (erro === 401) {
         setUsername(null)
-      }else{
+      } else {
         alert(erro)
       }
     })
   }, [token])
+
 
   function handleLogout() {
     localStorage.removeItem('auth')
@@ -35,23 +36,27 @@ export default function Header(props) {
   function handleLogin() {
     navigate('/sign-in')
   }
+
+  let name = ''
+  if (username) name = username?.split(' ')
+
   return (
     <>
       <BoxHeader>
         <Logo />
-        {props.return ? <Return onClick={()=>navigate('/')} src="https://cdn-icons-png.flaticon.com/512/263/263085.png"></Return> : 
-        <BoxInfoUser>
-          {token ?
-            <>
-              <h1>Ola, {username}</h1>
-              <div onClick={handleLogout}>
-                <Logout />
-              </div>
-            </>
-            :
-            <h2 onClick={handleLogin}>Clique aqui para acessar sua conta!</h2>
-          }
-        </BoxInfoUser>
+        {props.return ? <ArrowUDownLeft onClick={() => navigate('/')} size={28} color='white' /> :
+          <BoxInfoUser>
+            {token ?
+              <>
+                <h1>Ola, {name[0]}</h1>
+                <div onClick={handleLogout}>
+                  <SignOut size={28} weight="bold" />
+                </div>
+              </>
+              :
+              <h2 onClick={handleLogin}>Clique aqui para acessar sua conta!</h2>
+            }
+          </BoxInfoUser>
         }
       </BoxHeader>
     </>
@@ -84,9 +89,4 @@ const BoxInfoUser = styled.div`
   h2{
     font-size: 15px;
   }
-`
-
-const Return = styled.img`
-  height: 30px;
-  width: 30px;
 `

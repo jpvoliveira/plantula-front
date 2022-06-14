@@ -8,48 +8,66 @@ import TokenContext from '../../contexts/tokenContext'
 
 export default function Products() {
   const [product, setProduct] = useState({})
-  const [amount, setAmount] = useState(1000)
+  const [amount, setAmount] = useState(1)
   const { idProduct } = useParams();
   const navigate = useNavigate()
-  let total = (product.price/100)*amount
+  let total = (product.price / 100) * amount
   let price = product.price / 100
-  const {persistCart} = useContext(requestContext)
+  const { persistCart } = useContext(requestContext)
   const { token } = useContext(TokenContext)
-  
+
+
   useEffect(() => {
     const promise = api.getProductById(idProduct)
     promise.then((res) => {
       setProduct(res.data[0])
+      if (res.data[0].type === 'mudas') setAmount(1000)
     }).catch((error) => {
-      const erro = error.response.data
-      alert(erro)
+      const err = error.response
+      alert(err)
     })
   }, [idProduct])
 
-  function handleAmountRemove(){
-    if (amount>1000) {
-      setAmount(amount-1000)
-    }else{
-      setAmount(1000)
+  function handleAmountRemove() {
+    if (product.type === 'mudas') {
+      if (amount > 1000) {
+        setAmount(amount - 1000)
+      } else {
+        setAmount(1000)
+      }
+    } else {
+      if (amount > 1) {
+        setAmount(amount - 1)
+      } else {
+        setAmount(1)
+      }
     }
   }
 
-  function handleSubmit(){
+  function handleAmountAdd() {
+    if (product.type === 'mudas') {
+      setAmount(amount + 1000)
+    } else {
+      setAmount(amount + 1)
+    }
+  }
+
+  function handleSubmit() {
     persistCart({
       amount: amount,
       price: total,
       product: product
     })
-    if (token){
+    if (token) {
       navigate("/ordered")
-    }else{
+    } else {
       navigate("/sign-up")
     }
   }
 
   return (
     <>
-      <Header return={true}/>
+      <Header return={true} />
       <Box>
         <Data>
           <Title>{product.name}</Title>
@@ -62,7 +80,7 @@ export default function Products() {
         </Data>
         <Form onSubmit={handleSubmit}>
           <Quanty>
-            <div className="remove" onClick={()=>handleAmountRemove()}>-</div>
+            <div className="remove" onClick={() => handleAmountRemove()}>-</div>
             <input
               type="text"
               placeholder="Quantidade"
@@ -70,7 +88,7 @@ export default function Products() {
               onChange={(e) => setAmount(e.target.value)}
               required
             />
-            <div className="add" onClick={()=>setAmount(amount+1000)}>+</div>
+            <div className="add" onClick={() => handleAmountAdd()}>+</div>
           </Quanty>
           <h1>Total = R$ {total.toFixed(2)}</h1>
           <button type="submit"> COMPRAR </button>
@@ -129,15 +147,14 @@ const Quanty = styled.div`
     width: 25px;
     height: 25px;
     background-color: #528654;
-    border: 1px solid black;
     color: white;
     font-size: 20px;
   }
   .remove{
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 15px 0px 0px 15px;
   }
   .add{
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 15px 15px 0px;
   }
 `
 
@@ -159,7 +176,6 @@ const Form = styled.form`
     height: 25px;
     border:none;
     text-align: center;
-    border: 1px solid black;
     font-size: 15px;
   }
 
