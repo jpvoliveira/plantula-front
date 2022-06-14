@@ -9,25 +9,25 @@ export default function Products() {
   const [products, setProducts] = useState("")
   const [category, setCategory] = useState('mudas')
 
-  useEffect(()=>{
-    const promise = api.getProducts({category})
-    promise.then((res)=>{
+  useEffect(() => {
+    const promise = api.getProducts({ category })
+    promise.then((res) => {
       setProducts(res.data)
-    }).catch((error)=>{
+    }).catch((error) => {
       const erro = error.response.data
       alert(erro)
     })
   }, [category])
-
+  console.log(products)
   if (!products) return <p>Loading</p>
 
   return (
     <>
       <Header />
       <Box>
-        <BoxCategory category={category} setCategory={setCategory}/>
+        <BoxCategory category={category} setCategory={setCategory} />
         <Container>
-          {products.map((item)=> <Product data={item}/>)}
+          {products.map((item) => <Product data={item} />)}
         </Container>
       </Box>
     </>
