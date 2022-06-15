@@ -64,12 +64,17 @@ export default function Header(props) {
 }
 
 const BoxHeader = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
   display:flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: space-around;
   height: 130px;
+  width: 100vw;
   padding: 10px 15px;
   background-color:#528654;
   border-radius: 0px 0px 30px 30px;

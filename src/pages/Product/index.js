@@ -99,6 +99,7 @@ export default function Products() {
 }
 
 const Box = styled.div`
+  margin-top: 130px;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
@@ -192,5 +193,6 @@ const Form = styled.form`
     border-radius: 5px;
     margin-top: 15px;
     cursor: pointer;
+    margin-bottom: 50px;
   }
 `

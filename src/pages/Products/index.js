@@ -38,14 +38,15 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap; 
   width: 400px;
-  height: 580px;
+  height: 50vh;
   overflow-y: scroll;
   gap: 20px;
   margin-top: 30px;
-`
+  `
 const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 130px;
 `
