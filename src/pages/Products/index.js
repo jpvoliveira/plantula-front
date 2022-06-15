@@ -18,7 +18,7 @@ export default function Products() {
       alert(erro)
     })
   }, [category])
-  console.log(products)
+
   if (!products) return <p>Loading</p>
 
   return (
