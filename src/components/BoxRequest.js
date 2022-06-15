@@ -65,7 +65,7 @@ const ContainerRequest = styled.div`
     font-weight: bold;
   }
   h3{
-    font-size: 10px;
+    font-size: 12px;
   } 
 `
 

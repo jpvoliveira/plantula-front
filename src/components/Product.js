@@ -19,7 +19,7 @@ export default function Product({ data }) {
 }
 
 const Box = styled.div`
-  width: 400px;
+  width: 380px;
   height: 150px;
   display: flex;
 

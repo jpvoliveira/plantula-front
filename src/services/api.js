@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = 'http://localhost:5000';
-// const BASE_URL = 'https://git.heroku.com/plantula-api.git';
+// const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://git.heroku.com/plantula-api.git';
 
 function createConfig(token) {
   return {
