@@ -9,7 +9,7 @@ import BoxRequest from '../../components/BoxRequest'
 import BoxPayment from '../../components/BoxPayment'
 
 export default function Ordered() {
-  const { request } = useContext(requestContext)
+  const { request, setRequest } = useContext(requestContext)
   const { token } = useContext(TokenContext)
   const [userData, setUserData] = useState({})
   const [modal, setModal] = useState(false)
@@ -20,8 +20,8 @@ export default function Ordered() {
   const orderData = {
     userId: userData.id,
     productId: request.product.id,
-    amount: request.amount,
-    value: request.price
+    amount: amount,
+    value: signal
   }
 
   useEffect(() => {
@@ -42,6 +42,12 @@ export default function Ordered() {
     localStorage.removeItem('cart')
     navigate('/')
   }
+
+  let newRequest = request
+  newRequest.price = priceUpdate
+  newRequest.amount = amount
+
+  setRequest(newRequest)
 
   return (
     <>
