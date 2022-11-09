@@ -118,7 +118,9 @@ const Box = styled.div`
 const Infos = styled.div`
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
+  min-width: 340px;
   span{
     font-size: 13px;
     font-weight: 300;
