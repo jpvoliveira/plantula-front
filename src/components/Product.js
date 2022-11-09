@@ -19,10 +19,11 @@ export default function Product({ data }) {
 }
 
 const Box = styled.div`
-  width: 380px;
+  width: 100%;
   height: 150px;
   display: flex;
-
+  max-width: 400px;
+  min-width: 340px;
   align-items: center;
   gap: 20px;
   border-radius: 5px;

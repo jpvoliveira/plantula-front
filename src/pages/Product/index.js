@@ -71,7 +71,9 @@ export default function Products() {
       <Box>
         <Data>
           <Title>{product.name}</Title>
-          <Image url={product.image} />
+          <BoxImage>
+            <Image url={product.image} />
+          </BoxImage>
           <h2>R$ {price.toFixed(2)}</h2>
           <Infos>
             <span>Descrição</span>
@@ -130,7 +132,11 @@ const Infos = styled.div`
 const Data = styled.div`
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 400px;
+  min-width: 340px;
   gap: 20px;
 `
 
@@ -145,28 +151,36 @@ const Quanty = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 25px;
+    width: 30px;
     height: 25px;
     background-color: #528654;
     color: white;
-    font-size: 20px;
+    font-size: 24px;
   }
   .remove{
-    border-radius: 15px 0px 0px 15px;
+    border-radius: 5px 0px 0px 5px;
   }
   .add{
-    border-radius: 0px 15px 15px 0px;
+    border-radius: 0px 5px 5px 0px;
   }
 `
 
 const Image = styled.div`
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
+  min-width: 340px;
   height: 400px;
   background-image: url(${(props) => props.url});
   background-position: center;
 	background-size: cover;
   border-radius: 15px;
 `
+const BoxImage = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -184,12 +198,13 @@ const Form = styled.form`
     background-color: #528654;
     border: none;
     color: white;
-    width:100px;
+    width: 180px;
+    height: 50px;
     padding: 5px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 15px;
+    font-size: 20px;
     border-radius: 5px;
     margin-top: 15px;
     cursor: pointer;
