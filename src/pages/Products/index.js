@@ -18,7 +18,7 @@ export default function Products() {
       alert(erro)
     })
   }, [category])
-  console.log(products)
+
   if (!products) return <p>Loading</p>
 
   return (
@@ -37,8 +37,8 @@ export default function Products() {
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap; 
-  width: 400px;
-  height: 50vh;
+  width: 100%;
+  height: 60vh;
   overflow-y: scroll;
   gap: 20px;
   margin-top: 30px;
@@ -48,5 +48,7 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 130px;
+  margin-top: 120px;
+  padding-left: 10px;
+  padding-right: 10px;
 `

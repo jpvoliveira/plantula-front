@@ -1,22 +1,22 @@
 import styled from "styled-components"
 
-export default function BoxCategory({category, setCategory}) {
+export default function BoxCategory({ category, setCategory }) {
   return (
     <Box type={category}>
       <h1>Categorias:</h1>
-      <Category className="mudas" onClick={()=>setCategory('mudas')} >
+      <Category className="mudas" onClick={() => setCategory('mudas')} >
         <img src="https://cdn-icons-png.flaticon.com/512/497/497393.png" alt="" />
         <p>Mudas</p>
       </Category>
-      <Category className="adubo" onClick={()=>setCategory('adubo')}>
+      <Category className="adubo" onClick={() => setCategory('adubo')}>
         <img src="https://cdn-icons-png.flaticon.com/512/423/423956.png" alt="" />
         <p>Adubo</p>
       </Category>
-      <Category className="serviços" onClick={()=>setCategory('serviços')}>
+      <Category className="serviços" onClick={() => setCategory('serviços')}>
         <img src="https://cdn-icons-png.flaticon.com/512/1760/1760560.png" alt="" />
         <p>Serviços</p>
       </Category>
-      <Category className="mapas" onClick={()=>setCategory('mapas')}>
+      <Category className="mapas" onClick={() => setCategory('mapas')}>
         <img src="https://cdn-icons-png.flaticon.com/512/149/149442.png" alt="" />
         <p>Mapas</p>
       </Category>
@@ -28,7 +28,9 @@ const Box = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
+  min-width: 340px;
   height: 110px; 
   margin-top: 20px;
   position: relative;
@@ -40,16 +42,16 @@ const Box = styled.div`
     font-weight: 500;
   }
   .mudas{
-    background-color: ${(props)=> props.type === 'mudas' ? '#528654' : '#ffffff'}
+    background-color: ${(props) => props.type === 'mudas' ? '#528654' : '#ffffff'}
   }
   .adubo{
-    background-color: ${(props)=> props.type === 'adubo' ? '#528654' : '#ffffff'}
+    background-color: ${(props) => props.type === 'adubo' ? '#528654' : '#ffffff'}
   }
   .serviços{
-    background-color: ${(props)=> props.type === 'serviços' ? '#528654' : '#ffffff'}
+    background-color: ${(props) => props.type === 'serviços' ? '#528654' : '#ffffff'}
   }
   .mapas{
-    background-color: ${(props)=> props.type === 'mapas' ? '#528654' : '#ffffff'}
+    background-color: ${(props) => props.type === 'mapas' ? '#528654' : '#ffffff'}
   }
 `
 

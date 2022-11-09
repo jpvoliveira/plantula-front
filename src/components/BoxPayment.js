@@ -4,7 +4,6 @@ import api from "../services/api"
 
 export default function BoxPayment({ orderData }) {
   const navigate = useNavigate()
-  console.log(orderData)
   // let mensagem = `Ola gostaria de fazer um pedido.`
   // let link = 'https://wa.me/5531975881152?text=' + encodeURIComponent(mensagem)
   // window.open(link)

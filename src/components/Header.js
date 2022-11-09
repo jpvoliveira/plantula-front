@@ -50,7 +50,7 @@ export default function Header(props) {
               <>
                 <h1>Ola, {name[0]}</h1>
                 <div onClick={handleLogout}>
-                  <SignOut size={28} weight="bold" />
+                  <SignOut size={28} />
                 </div>
               </>
               :
@@ -74,7 +74,8 @@ const BoxHeader = styled.div`
   text-align: center;
   justify-content: space-around;
   height: 130px;
-  width: 100vw;
+  width: 100%;
+  min-width: 340px;
   padding: 10px 15px;
   background-color:#528654;
   border-radius: 0px 0px 30px 30px;
@@ -88,7 +89,6 @@ const BoxHeader = styled.div`
 const BoxInfoUser = styled.div`
   display: flex;
   gap: 200px;
-  font-weight: bold;
   font-size: 20px;
   color: white;
   h2{
